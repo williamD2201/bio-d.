@@ -1,0 +1,1623 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Polyfill / Patch window.fetch setter for extension and preview environment compatibility -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : undefined;
+          var activeFetch = originalFetch;
+          var fetchDescriptor = {
+            get: function() {
+              return activeFetch;
+            },
+            set: function(newFetch) {
+              activeFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true
+          };
+
+          try {
+            Object.defineProperty(window, 'fetch', fetchDescriptor);
+          } catch (_) {}
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', fetchDescriptor);
+            } catch (_) {}
+          }
+
+          if (typeof globalThis !== 'undefined' && globalThis !== window) {
+            try {
+              Object.defineProperty(globalThis, 'fetch', fetchDescriptor);
+            } catch (_) {}
+          }
+        } catch (_) {}
+      })();
+    </script>
+
+    <title>XI D BIO Routine | Grade 11 Science • Biology Group</title>
+    <meta name="description" content="Your daily academic schedule, intelligently organized. Live timetable, real-time period tracker, daily motivation, and class details for XI D Biology group." />
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content="XI D BIO Routine | Grade 11 Science • Biology Group" />
+    <meta property="og:description" content="Your daily academic schedule, intelligently organized for Grade 11 Science Biology." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                950: '#070C16',
+                900: '#0B1220',
+                850: '#0F182B',
+                800: '#14213D',
+                700: '#1C2E52',
+                600: '#263E6F'
+              },
+              card: {
+                surface: '#111A2E',
+                hover: '#16233E',
+                border: 'rgba(255, 255, 255, 0.08)'
+              },
+              brand: {
+                blue: '#2563EB',
+                electric: '#3B82F6',
+                cyan: '#06B6D4',
+                crimson: '#C53030',
+                emerald: '#10B981',
+                amber: '#F59E0B'
+              }
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      /* Custom background subtle grid and scrollbars */
+      body {
+        background-color: #070C16;
+        color: #F8FAFC;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        overflow-x: hidden;
+      }
+      .bg-grid-pattern {
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      /* Custom pulse glow for active class */
+      @keyframes softPulse {
+        0%, 100% { opacity: 0.9; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.004); }
+      }
+      .active-period-card {
+        animation: softPulse 3.5s ease-in-out infinite;
+      }
+      /* Print formatting */
+      @media print {
+        header, #day-navigation, #daily-motivation-section, #today-thought-section, footer, .no-print {
+          display: none !important;
+        }
+        body {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+        .card-surface {
+          border: 1px solid #ccc !important;
+          background: #fff !important;
+          color: #000 !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-navy-950 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Subtle Background Ambient Glows -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-blue-600/10 blur-[130px] rounded-full"></div>
+      <div class="absolute top-[600px] -right-40 w-[600px] h-[500px] bg-indigo-600/10 blur-[140px] rounded-full"></div>
+      <div class="absolute bottom-10 left-[-100px] w-[500px] h-[500px] bg-cyan-600/8 blur-[130px] rounded-full"></div>
+      <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+
+      <!-- TOP BAR (3-Zone Top Bar Contract) -->
+      <header class="sticky top-0 z-50 backdrop-blur-md bg-navy-950/85 border-b border-white/[0.08] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <!-- Zone 1: Single text wordmark -->
+          <a href="#" class="text-lg sm:text-xl font-bold tracking-tight text-white hover:text-blue-400 transition-colors flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 font-mono text-sm font-bold">XI</span>
+            <span>XI D BIO Routine</span>
+          </a>
+
+          <!-- Zone 2: Clean text navigation links -->
+          <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+            <a href="#schedule-section" class="hover:text-blue-400 transition-colors">Schedule</a>
+            <a href="#daily-inspo" class="hover:text-blue-400 transition-colors">Inspiration</a>
+            <a href="#quick-stats" class="hover:text-blue-400 transition-colors">Weekly Stats</a>
+            <a href="#teachers-ref" class="hover:text-blue-400 transition-colors">Faculty</a>
+            <a href="#class-info" class="hover:text-blue-400 transition-colors">Class Info</a>
+            <a href="#contact-section" class="hover:text-blue-400 transition-colors">Contact</a>
+          </nav>
+
+          <!-- Zone 3: Live indicator & action -->
+          <div class="flex items-center gap-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 text-xs font-medium text-blue-300">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span id="nav-live-clock" class="font-mono tabular-nums">00:00:00</span>
+            </div>
+
+            <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-white/10 text-slate-200 transition-colors" title="Print Routine">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              <span>Print</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO SECTION -->
+      <section class="pt-10 pb-8 sm:pt-14 sm:pb-12 border-b border-white/[0.06] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-2">
+            <!-- Left Header Copy -->
+            <div class="max-w-3xl">
+              <!-- Live Schedule Badge -->
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/40 border border-blue-500/30 text-blue-300 text-xs font-semibold tracking-wide uppercase mb-4 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                <span>● Live Schedule</span>
+                <span class="text-blue-400/40">|</span>
+                <span class="text-slate-300 normal-case font-medium">Academic Year 2026–27</span>
+              </div>
+
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+                XI D BIO <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">Routine</span>
+              </h1>
+              
+              <p class="mt-2 text-lg sm:text-xl font-semibold text-blue-300">
+                Grade 11 Science • Biology Group
+              </p>
+              
+              <p class="mt-1 text-sm sm:text-base text-slate-400 max-w-xl">
+                Your daily academic schedule, intelligently organized.
+              </p>
+            </div>
+
+            <!-- Right Live Date / Clock Card -->
+            <div class="lg:text-right flex flex-col sm:flex-row lg:flex-col gap-3 sm:items-center lg:items-end justify-between bg-card-surface/70 border border-white/[0.08] p-4 sm:p-5 rounded-2xl shadow-xl backdrop-blur-md">
+              <div>
+                <div id="hero-live-date" class="text-sm sm:text-base font-semibold text-slate-200">
+                  Loading date...
+                </div>
+                <div id="hero-live-time" class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums tracking-tight mt-0.5">
+                  00:00:00 AM
+                </div>
+              </div>
+              <div class="inline-flex items-center gap-2 text-xs text-slate-400 bg-navy-950/60 px-3 py-1.5 rounded-lg border border-white/5">
+                <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span id="hero-school-window">School Hours: 11:10 AM – 05:50 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- REAL-TIME STATUS BANNER (Dynamic detection of now, before, during, after school, break, and next class) -->
+          <div id="live-status-card" class="mt-6 rounded-2xl border transition-all p-4 sm:p-5 shadow-lg bg-card-surface border-white/[0.08]">
+            <!-- Injected via JavaScript -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
+                <span class="text-sm font-medium text-slate-300">Synchronizing routine schedule...</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- MOTIVATION & INSPIRATION + DAILY FACT (Sections 4 & 5) -->
+      <section id="daily-inspo" class="py-8 sm:py-10 border-b border-white/[0.06] bg-navy-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            
+            <!-- DAILY MOTIVATION CARD (Section 4) -->
+            <div class="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-gradient-to-br from-blue-950/60 via-navy-850/80 to-navy-900 border border-blue-500/20 p-5 sm:p-6 shadow-xl relative overflow-hidden group">
+              <!-- Background soft decorative glow -->
+              <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-blue-600/10 rounded-full blur-2xl group-hover:bg-blue-600/15 transition-all"></div>
+              
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg">✨</span>
+                    <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Daily Motivation</h2>
+                  </div>
+                  <span class="text-[11px] font-bold tracking-wider uppercase text-blue-400 bg-blue-900/40 px-2.5 py-1 rounded-md border border-blue-500/30">
+                    TODAY'S INSPIRATION
+                  </span>
+                </div>
+
+                <!-- Quote Block -->
+                <div class="relative pl-6 sm:pl-7 pr-2 my-2">
+                  <svg class="absolute -top-1 left-0 w-5 h-5 text-blue-400/50" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                  <p id="motivation-quote" class="text-base sm:text-lg text-slate-100 font-medium leading-relaxed italic">
+                    Loading today's inspiring thought...
+                  </p>
+                </div>
+              </div>
+
+              <!-- Quote Author & Action -->
+              <div class="mt-4 pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs text-slate-400">
+                <span id="motivation-author" class="font-semibold text-blue-300">
+                  — Wise Scholar
+                </span>
+                <button id="copy-quote-btn" onclick="copyQuoteToClipboard()" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  <span id="copy-quote-label">Copy Quote</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- DAILY FACT CARD (Section 5) -->
+            <div class="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-card-surface/90 border border-white/[0.08] p-5 sm:p-6 shadow-xl relative overflow-hidden">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg">🧠</span>
+                    <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Daily Amazing Fact</h2>
+                  </div>
+                  <span id="fact-tag" class="text-[11px] font-semibold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/20">
+                    BIOLOGY
+                  </span>
+                </div>
+
+                <div class="my-2">
+                  <p id="daily-fact-text" class="text-sm sm:text-base text-slate-300 leading-relaxed">
+                    Loading today's fascinating scientific fact...
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs text-slate-500">
+                <span class="flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span>Curated for Science Students</span>
+                </span>
+                <span class="text-slate-400">Updates at Midnight</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TIMETABLE CONTROLS & DAY NAVIGATION (Section 6) -->
+      <section id="schedule-section" class="py-8 sm:py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Heading + View Controls -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  Class Schedule
+                </h2>
+                <span id="active-day-badge" class="px-2.5 py-0.5 text-xs font-semibold rounded-md bg-blue-600/20 text-blue-300 border border-blue-500/30">
+                  Monday
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                Select a day to view its 10 periods. The running period is highlighted automatically.
+              </p>
+            </div>
+
+            <!-- Quick controls: Jump to today + View mode toggle -->
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <button id="jump-today-btn" onclick="selectToday()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-navy-800 hover:bg-navy-700 text-blue-300 border border-blue-500/20 transition-all shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <span>Jump to Today</span>
+              </button>
+
+              <button id="toggle-view-btn" onclick="toggleWeekView()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-white/10 transition-all shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+                <span id="view-mode-label">Week Overview Table</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Weekend Notice Banner (Shown on Sat/Sun) -->
+          <div id="weekend-notice-banner" class="hidden mb-6 p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 text-amber-200 flex items-center justify-between text-sm">
+            <div class="flex items-center gap-2.5">
+              <span class="text-lg">🏖️</span>
+              <div>
+                <span class="font-bold">Weekend Notice:</span>
+                <span class="text-amber-300 ml-1">Weekend • Showing Monday's routine</span>
+              </div>
+            </div>
+            <span class="text-xs text-amber-400 font-mono">Classes resume Monday 11:10 AM</span>
+          </div>
+
+          <!-- DAY NAVIGATION TABS (Monday to Friday) -->
+          <div id="day-navigation" class="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar pb-3 pt-1" role="tablist" aria-label="Day selection">
+            <button onclick="setDay('Monday')" id="tab-Monday" class="day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-bold transition-all text-center border relative focus:outline-none focus:ring-2 focus:ring-blue-500/50" role="tab" aria-selected="false">
+              <span class="block">Monday</span>
+              <span class="text-[11px] font-normal opacity-70 block mt-0.5">10 Periods</span>
+            </button>
+            <button onclick="setDay('Tuesday')" id="tab-Tuesday" class="day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-bold transition-all text-center border relative focus:outline-none focus:ring-2 focus:ring-blue-500/50" role="tab" aria-selected="false">
+              <span class="block">Tuesday</span>
+              <span class="text-[11px] font-normal opacity-70 block mt-0.5">10 Periods</span>
+            </button>
+            <button onclick="setDay('Wednesday')" id="tab-Wednesday" class="day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-bold transition-all text-center border relative focus:outline-none focus:ring-2 focus:ring-blue-500/50" role="tab" aria-selected="false">
+              <span class="block">Wednesday</span>
+              <span class="text-[11px] font-normal opacity-70 block mt-0.5">10 Periods</span>
+            </button>
+            <button onclick="setDay('Thursday')" id="tab-Thursday" class="day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-bold transition-all text-center border relative focus:outline-none focus:ring-2 focus:ring-blue-500/50" role="tab" aria-selected="false">
+              <span class="block">Thursday</span>
+              <span class="text-[11px] font-normal opacity-70 block mt-0.5">10 Periods</span>
+            </button>
+            <button onclick="setDay('Friday')" id="tab-Friday" class="day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-bold transition-all text-center border relative focus:outline-none focus:ring-2 focus:ring-blue-500/50" role="tab" aria-selected="false">
+              <span class="block">Friday</span>
+              <span class="text-[11px] font-normal opacity-70 block mt-0.5">10 Periods</span>
+            </button>
+          </div>
+
+          <!-- SUBJECT FILTER BAR (Subtle interactive subject highlighting) -->
+          <div class="mt-4 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs">
+            <span class="text-slate-400 font-semibold uppercase tracking-wider text-[11px] mr-1 shrink-0">Filter:</span>
+            <button onclick="filterSubject('ALL')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-blue-600 text-white font-medium transition-colors shrink-0" data-sub="ALL">All Subjects</button>
+            <button onclick="filterSubject('LAB')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="LAB">🧪 Lab Sessions</button>
+            <button onclick="filterSubject('PHY')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="PHY">Physics (PHY)</button>
+            <button onclick="filterSubject('CHEM')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="CHEM">Chemistry (CHEM)</button>
+            <button onclick="filterSubject('BOT')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="BOT">Botany (BOT)</button>
+            <button onclick="filterSubject('ZOO')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="ZOO">Zoology (ZOO)</button>
+            <button onclick="filterSubject('MATH')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="MATH">Mathematics (MATH)</button>
+            <button onclick="filterSubject('ENG')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="ENG">English (ENG)</button>
+            <button onclick="filterSubject('NEP')" class="sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0" data-sub="NEP">Nepali (NEP)</button>
+          </div>
+
+          <!-- TIMETABLE CARDS CONTAINER (Section 8, 9, 10, 11) -->
+          <div id="cards-view-container" class="mt-6">
+            <div id="timetable-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Dynamically populated timetable cards -->
+            </div>
+          </div>
+
+          <!-- FULL WEEK OVERVIEW TABLE (Toggleable secondary view) -->
+          <div id="week-table-container" class="hidden mt-6 overflow-hidden rounded-2xl border border-white/[0.08] bg-card-surface shadow-2xl">
+            <div class="p-4 sm:p-5 bg-navy-900/90 border-b border-white/[0.08] flex items-center justify-between">
+              <div>
+                <h3 class="font-bold text-white text-base">Weekly Schedule Matrix</h3>
+                <p class="text-xs text-slate-400">Complete Monday – Friday periods view at a glance</p>
+              </div>
+              <span class="text-xs font-mono text-blue-300 bg-blue-900/30 px-2.5 py-1 rounded border border-blue-500/20">50 Total Periods</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr class="bg-navy-950/80 border-b border-white/[0.08] text-slate-400 font-mono">
+                    <th class="p-3 font-semibold">Period & Time</th>
+                    <th class="p-3 font-semibold">Monday</th>
+                    <th class="p-3 font-semibold">Tuesday</th>
+                    <th class="p-3 font-semibold">Wednesday</th>
+                    <th class="p-3 font-semibold">Thursday</th>
+                    <th class="p-3 font-semibold">Friday</th>
+                  </tr>
+                </thead>
+                <tbody id="week-matrix-body" class="divide-y divide-white/[0.05]">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- WEEK OVERVIEW / QUICK STATS (Section 18) -->
+      <section id="quick-stats" class="py-10 border-y border-white/[0.06] bg-navy-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="mb-6">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-blue-400">Routine Metrics</h2>
+            <p class="text-xl sm:text-2xl font-extrabold text-white">Weekly Academic Overview</p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Stat 1 -->
+            <div class="rounded-2xl p-5 bg-card-surface/80 border border-white/[0.08] relative overflow-hidden group hover:border-blue-500/30 transition-all">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-slate-400">Schedule Scope</span>
+                <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </span>
+              </div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">5 Days</div>
+              <p class="text-xs text-slate-400 mt-1">Monday – Friday</p>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="rounded-2xl p-5 bg-card-surface/80 border border-white/[0.08] relative overflow-hidden group hover:border-blue-500/30 transition-all">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-slate-400">Daily Density</span>
+                <span class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </span>
+              </div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">10 Periods</div>
+              <p class="text-xs text-slate-400 mt-1">Each school day</p>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="rounded-2xl p-5 bg-card-surface/80 border border-white/[0.08] relative overflow-hidden group hover:border-blue-500/30 transition-all">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-slate-400">Operating Hours</span>
+                <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </span>
+              </div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">11:10 – 5:50</div>
+              <p class="text-xs text-slate-400 mt-1">Daily schedule</p>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="rounded-2xl p-5 bg-card-surface/80 border border-white/[0.08] relative overflow-hidden group hover:border-blue-500/30 transition-all">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-slate-400">Hands-on Science</span>
+                <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </span>
+              </div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">3 Lab Sessions</div>
+              <p class="text-xs text-slate-400 mt-1">Across the weekly routine</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TEACHER & SUBJECT REFERENCE DECODER -->
+      <section id="teachers-ref" class="py-8 border-b border-white/[0.06]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="rounded-2xl bg-card-surface border border-white/[0.08] p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400">📋</span>
+                <h3 class="text-base font-bold text-white">Teacher & Subject Reference Guide</h3>
+              </div>
+              <span class="text-xs text-slate-400">Official Faculty Codes</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs">
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-blue-400">RK</div>
+                <div class="text-slate-200 font-medium">NEP</div>
+                <div class="text-slate-400 text-[11px]">Nepali</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-rose-400">SR</div>
+                <div class="text-slate-200 font-medium">ENG</div>
+                <div class="text-slate-400 text-[11px]">English</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-purple-400">DK</div>
+                <div class="text-slate-200 font-medium">CHEM</div>
+                <div class="text-slate-400 text-[11px]">Chemistry</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-purple-400">YK</div>
+                <div class="text-slate-200 font-medium">CHEM</div>
+                <div class="text-slate-400 text-[11px]">Chemistry</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-sky-400">RS</div>
+                <div class="text-slate-200 font-medium">PHY</div>
+                <div class="text-slate-400 text-[11px]">Physics</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-sky-400">JCA</div>
+                <div class="text-slate-200 font-medium">PHY</div>
+                <div class="text-slate-400 text-[11px]">Physics</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-emerald-400">MP</div>
+                <div class="text-slate-200 font-medium">BOT</div>
+                <div class="text-slate-400 text-[11px]">Botany</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-teal-400">SD</div>
+                <div class="text-slate-200 font-medium">ZOO</div>
+                <div class="text-slate-400 text-[11px]">Zoology</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-teal-400">AD</div>
+                <div class="text-slate-200 font-medium">ZOO</div>
+                <div class="text-slate-400 text-[11px]">Zoology</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-indigo-400">MR</div>
+                <div class="text-slate-200 font-medium">MATH</div>
+                <div class="text-slate-400 text-[11px]">Mathematics</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-indigo-400">MJ</div>
+                <div class="text-slate-200 font-medium">MATH</div>
+                <div class="text-slate-400 text-[11px]">Mathematics</div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-950/60 border border-white/5">
+                <div class="font-mono font-bold text-cyan-400">Labs</div>
+                <div class="text-slate-200 font-medium">JCA+DK / AD+MP / RS+DK</div>
+                <div class="text-slate-400 text-[11px]">Practical Sessions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLASS INFORMATION & ABOUT & CONTACT (Sections 19, 20, 21, 23) -->
+      <section id="class-info" class="pt-10 pb-16 relative bg-gradient-to-b from-navy-950 via-navy-900 to-[#070C16]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- SECTION 19 & 21: CLASS INFORMATION & ABOUT THIS SCHEDULE -->
+            <div class="lg:col-span-6 flex flex-col gap-6">
+              
+              <!-- 19. Class Information Card -->
+              <div class="rounded-2xl bg-card-surface/90 border border-white/[0.08] p-6 shadow-xl">
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="text-lg">📌</span>
+                  <h3 class="text-lg font-bold text-white tracking-tight">Class Information</h3>
+                </div>
+
+                <div class="space-y-4 text-sm">
+                  <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                    <span class="text-slate-400">Class Section</span>
+                    <span class="font-bold text-white font-mono">XI D BIO</span>
+                  </div>
+
+                  <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                    <span class="text-slate-400">Academic Stream</span>
+                    <span class="font-semibold text-blue-300">Grade 11 Science — Biology Group</span>
+                  </div>
+
+                  <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                    <span class="text-slate-400">Academic Year</span>
+                    <span class="font-semibold text-slate-200 font-mono">2026–27</span>
+                  </div>
+
+                  <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                    <span class="text-slate-400">Class Hours</span>
+                    <span class="font-mono text-emerald-400 font-semibold">11:10 AM – 5:50 PM</span>
+                  </div>
+
+                  <div class="flex items-center justify-between">
+                    <span class="text-slate-400">School Days</span>
+                    <span class="font-semibold text-slate-200">Monday – Friday</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 21. About This Schedule Card -->
+              <div class="rounded-2xl bg-card-surface/90 border border-white/[0.08] p-6 shadow-xl">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-lg">💡</span>
+                  <h3 class="text-lg font-bold text-white tracking-tight">About This Schedule</h3>
+                </div>
+
+                <p class="text-sm text-slate-300 leading-relaxed">
+                  XI-D BIO daily timetable for academic year 2026–27. Classes run from 11:10 AM to 5:50 PM across 10 periods, Monday to Friday.
+                </p>
+
+                <div class="mt-4 p-3 rounded-xl bg-blue-950/40 border border-blue-500/20 text-xs text-blue-300 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span>Built to make your daily academic routine easier to follow.</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- SECTION 20: CONTACT INFORMATION -->
+            <div id="contact-section" class="lg:col-span-6 flex flex-col justify-between rounded-2xl bg-card-surface/90 border border-white/[0.08] p-6 shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg">📬</span>
+                    <h3 class="text-lg font-bold text-white tracking-tight">Contact Information</h3>
+                  </div>
+                  <span class="text-xs text-slate-400 bg-white/5 px-2 py-0.5 rounded">Administration</span>
+                </div>
+
+                <p class="text-xs text-slate-400 mb-6">
+                  For attendance queries, academic notices, or class coordination, reach out through the official school channels below.
+                </p>
+
+                <div class="space-y-4 text-sm">
+                  
+                  <!-- Email -->
+                  <a href="mailto:info@nexxel.me" class="group flex items-start gap-4 p-3.5 rounded-xl bg-navy-950/60 border border-white/[0.06] hover:border-blue-500/40 hover:bg-navy-900 transition-all">
+                    <div class="p-2.5 rounded-lg bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                      <div class="text-xs text-slate-400 font-medium">Email Address</div>
+                      <div class="font-mono text-white group-hover:text-blue-300 transition-colors break-all">info@nexxel.me</div>
+                    </div>
+                  </a>
+
+                  <!-- Gmail -->
+                  <a href="mailto:nexxel.me@gmail.com" class="group flex items-start gap-4 p-3.5 rounded-xl bg-navy-950/60 border border-white/[0.06] hover:border-emerald-500/40 hover:bg-navy-900 transition-all">
+                    <div class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                      <div class="text-xs text-slate-400 font-medium">Gmail</div>
+                      <div class="font-mono text-white group-hover:text-emerald-300 transition-colors break-all">nexxel.me@gmail.com</div>
+                    </div>
+                  </a>
+
+                  <!-- Location -->
+                  <div class="flex items-start gap-4 p-3.5 rounded-xl bg-navy-950/60 border border-white/[0.06]">
+                    <div class="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div>
+                      <div class="text-xs text-slate-400 font-medium">Location</div>
+                      <div class="font-medium text-white">Chabil, Kathmandu, Nepal</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Extra Student Resource Quick Links -->
+              <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs text-slate-400">
+                <span>Timetable revision: Academic Year 2026–27</span>
+                <span class="text-blue-400 font-medium">XI-D Biology Group</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FOOTER (Section 22 & 23) -->
+      <footer class="mt-auto border-t border-white/[0.08] bg-navy-950 py-8 text-center text-xs text-slate-400 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-2 font-semibold text-slate-200 text-sm">
+            <span>XI D BIO Routine</span>
+            <span class="hidden sm:inline text-slate-600">•</span>
+            <span class="text-blue-400">Grade 11 Science • Biology Group</span>
+          </div>
+
+          <p class="text-slate-400">
+            © 2026–27 XI D BIO. All rights reserved.
+          </p>
+
+          <p class="text-slate-400 font-medium pt-1">
+            Made for students, built for better routines.
+          </p>
+
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT ENGINE (All Sections, Vanilla JS, Zero External Libraries) -->
+    <script>
+      /**
+       * XI D BIO ROUTINE - OFFICIAL DATA SPECIFICATION
+       * Strictly matching the user prompt timetable.
+       */
+      const TIME_SLOTS = [
+        { period: 1,  time: "11:10 – 11:50", startMin: 670,  endMin: 710,  startFormatted: "11:10 AM", endFormatted: "11:50 AM" },
+        { period: 2,  time: "11:50 – 12:30", startMin: 710,  endMin: 750,  startFormatted: "11:50 AM", endFormatted: "12:30 PM" },
+        { period: 3,  time: "12:30 – 01:10", startMin: 750,  endMin: 790,  startFormatted: "12:30 PM", endFormatted: "01:10 PM" },
+        { period: 4,  time: "01:10 – 01:50", startMin: 790,  endMin: 830,  startFormatted: "01:10 PM", endFormatted: "01:50 PM" },
+        { period: 5,  time: "01:50 – 02:30", startMin: 830,  endMin: 870,  startFormatted: "01:50 PM", endFormatted: "02:30 PM" },
+        { period: 6,  time: "02:30 – 03:10", startMin: 870,  endMin: 910,  startFormatted: "02:30 PM", endFormatted: "03:10 PM" },
+        { period: 7,  time: "03:10 – 03:50", startMin: 910,  endMin: 950,  startFormatted: "03:10 PM", endFormatted: "03:50 PM" },
+        { period: 8,  time: "03:50 – 04:30", startMin: 950,  endMin: 990,  startFormatted: "03:50 PM", endFormatted: "04:30 PM" },
+        { period: 9,  time: "04:30 – 05:10", startMin: 990,  endMin: 1030, startFormatted: "04:30 PM", endFormatted: "05:10 PM" },
+        { period: 10, time: "05:10 – 05:50", startMin: 1030, endMin: 1070, startFormatted: "05:10 PM", endFormatted: "05:50 PM" }
+      ];
+
+      // Schedule definition strictly per user prompt
+      const SCHEDULE = {
+        Monday: [
+          { period: 1, subject: "NEP", teacher: "RK", type: "regular" },
+          { period: 2, subject: "ENG", teacher: "SR", type: "regular" },
+          { period: 3, subject: "CHEM", teacher: "DK", type: "regular" },
+          { period: 4, subject: "PHY", teacher: "RS", type: "regular" },
+          { period: 5, subject: "JCA + DK (Lab)", teacher: "JCA + DK", type: "lab", labPart: "1/2" },
+          { period: 6, subject: "JCA + DK (Lab)", teacher: "JCA + DK", type: "lab", labPart: "2/2" },
+          { period: 7, subject: "Break", teacher: "", type: "break" },
+          { period: 8, subject: "CHEM", teacher: "YK", type: "regular" },
+          { period: 9, subject: "PHY", teacher: "JCA", type: "regular" },
+          { period: 10, subject: "BOT", teacher: "MP", type: "regular" }
+        ],
+        Tuesday: [
+          { period: 1, subject: "NEP", teacher: "RK", type: "regular" },
+          { period: 2, subject: "MATH", teacher: "MR", type: "regular" },
+          { period: 3, subject: "AD + MP (Lab)", teacher: "AD + MP", type: "lab", labPart: "1/2" },
+          { period: 4, subject: "AD + MP (Lab)", teacher: "AD + MP", type: "lab", labPart: "2/2" },
+          { period: 5, subject: "MATH", teacher: "MJ", type: "regular" },
+          { period: 6, subject: "Break", teacher: "", type: "break" },
+          { period: 7, subject: "MATH", teacher: "MJ", type: "regular" },
+          { period: 8, subject: "BOT", teacher: "MP", type: "regular" },
+          { period: 9, subject: "Asgmt", teacher: "Self/Dept", type: "regular" },
+          { period: 10, subject: "PHY", teacher: "JCA", type: "regular" }
+        ],
+        Wednesday: [
+          { period: 1, subject: "MATH", teacher: "MR", type: "regular" },
+          { period: 2, subject: "ZOO", teacher: "SD", type: "regular" },
+          { period: 3, subject: "CHEM", teacher: "DK", type: "regular" },
+          { period: 4, subject: "ENG", teacher: "SR", type: "regular" },
+          { period: 5, subject: "MATH", teacher: "MJ", type: "regular" },
+          { period: 6, subject: "Break", teacher: "", type: "break" },
+          { period: 7, subject: "PHY", teacher: "RS", type: "regular" },
+          { period: 8, subject: "BOT", teacher: "MP", type: "regular" },
+          { period: 9, subject: "CHEM", teacher: "YK", type: "regular" },
+          { period: 10, subject: "PHY", teacher: "JCA", type: "regular" }
+        ],
+        Thursday: [
+          { period: 1, subject: "RS + DK (Lab)", teacher: "RS + DK", type: "lab", labPart: "1/2" },
+          { period: 2, subject: "RS + DK (Lab)", teacher: "RS + DK", type: "lab", labPart: "2/2" },
+          { period: 3, subject: "MATH", teacher: "MR", type: "regular" },
+          { period: 4, subject: "ENG", teacher: "SR", type: "regular" },
+          { period: 5, subject: "PHY", teacher: "RS", type: "regular" },
+          { period: 6, subject: "Break", teacher: "", type: "break" },
+          { period: 7, subject: "BOT", teacher: "MP", type: "regular" },
+          { period: 8, subject: "PHY", teacher: "JCA", type: "regular" },
+          { period: 9, subject: "CHEM", teacher: "DK", type: "regular" },
+          { period: 10, subject: "ZOO", teacher: "SD", type: "regular" }
+        ],
+        Friday: [
+          { period: 1, subject: "ZOO", teacher: "AD", type: "regular" },
+          { period: 2, subject: "MATH", teacher: "MR", type: "regular" },
+          { period: 3, subject: "CHEM", teacher: "DK", type: "regular" },
+          { period: 4, subject: "NEP", teacher: "RK", type: "regular" },
+          { period: 5, subject: "PHY", teacher: "RS", type: "regular" },
+          { period: 6, subject: "Break", teacher: "", type: "break" },
+          { period: 7, subject: "CHEM", teacher: "YK", type: "regular" },
+          { period: 8, subject: "MATH", teacher: "MJ", type: "regular" },
+          { period: 9, subject: "ZOO", teacher: "AD", type: "regular" },
+          { period: 10, subject: "CHEM", teacher: "YK", type: "regular" }
+        ]
+      };
+
+      // Full subject styling profiles (Section 9)
+      const SUBJECT_STYLES = {
+        MATH: { label: "Mathematics", badgeBg: "bg-indigo-950/60", badgeText: "text-indigo-300", border: "border-indigo-500/30", dot: "bg-indigo-400" },
+        PHY:  { label: "Physics", badgeBg: "bg-sky-950/60", badgeText: "text-sky-300", border: "border-sky-500/30", dot: "bg-sky-400" },
+        CHEM: { label: "Chemistry", badgeBg: "bg-purple-950/60", badgeText: "text-purple-300", border: "border-purple-500/30", dot: "bg-purple-400" },
+        BOT:  { label: "Botany", badgeBg: "bg-emerald-950/60", badgeText: "text-emerald-300", border: "border-emerald-500/30", dot: "bg-emerald-400" },
+        ZOO:  { label: "Zoology", badgeBg: "bg-teal-950/60", badgeText: "text-teal-300", border: "border-teal-500/30", dot: "bg-teal-400" },
+        ENG:  { label: "English", badgeBg: "bg-rose-950/60", badgeText: "text-rose-300", border: "border-rose-500/30", dot: "bg-rose-400" },
+        NEP:  { label: "Nepali", badgeBg: "bg-amber-950/60", badgeText: "text-amber-300", border: "border-amber-500/30", dot: "bg-amber-400" },
+        Asgmt:{ label: "Assignment Period", badgeBg: "bg-slate-900", badgeText: "text-slate-300", border: "border-slate-600/30", dot: "bg-slate-400" }
+      };
+
+      // Large Motivational Quotes Collection (Section 4)
+      const MOTIVATIONAL_QUOTES = [
+        { text: "Somewhere, something incredible is waiting to be known. Stay curious and relentless in your studies.", author: "Carl Sagan" },
+        { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+        { text: "Science is magic that works. Every formula mastered brings you closer to truth.", author: "Kurt Vonnegut" },
+        { text: "Discipline is the bridge between goals and accomplishment.", author: "Jim Rohn" },
+        { text: "In the middle of difficulty lies opportunity. Keep solving, keep learning.", author: "Albert Einstein" },
+        { text: "What we know is a drop, what we don't know is an ocean.", author: "Isaac Newton" },
+        { text: "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more.", author: "Marie Curie" },
+        { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Aristotle" },
+        { text: "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.", author: "Malcolm X" },
+        { text: "The expert in anything was once a beginner. Trust the daily routine.", author: "Helen Hayes" },
+        { text: "Hard work beats talent when talent fails to work hard.", author: "Tim Notke" },
+        { text: "Science knows no country, because knowledge belongs to humanity, and is the torch which illuminates the world.", author: "Louis Pasteur" },
+        { text: "Genius is one percent inspiration and ninety-nine percent perspiration.", author: "Thomas Edison" },
+        { text: "Study hard what interests you the most in the most undisciplined, irreverent and original manner possible.", author: "Richard Feynman" },
+        { text: "The beautiful thing about learning is that no one can take it away from you.", author: "B.B. King" },
+        { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+        { text: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Mahatma Gandhi" },
+        { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+        { text: "Small daily improvements over time lead to stunning long-term results.", author: "Robin Sharma" },
+        { text: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau" },
+        { text: "Science is simply the word we use to describe a method of organizing our curiosity.", author: "Tim Minchin" },
+        { text: "The secret of getting ahead is getting started. The secret of getting started is breaking complex tasks into small steps.", author: "Mark Twain" },
+        { text: "You don't have to be great to start, but you have to start to be great.", author: "Zig Ziglar" },
+        { text: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
+        { text: "The roots of education are bitter, but the fruit is sweet.", author: "Aristotle" },
+        { text: "Do not wait; the time will never be 'just right.' Start where you stand, and work with whatever tools you may have.", author: "George Herbert" },
+        { text: "Biology is the most powerful technology ever created. DNA is software, protein are hardware, cells are factories.", author: "Arvind Gupta" },
+        { text: "Concentrate all your thoughts upon the work in hand. The sun's rays do not burn until brought to a focus.", author: "Alexander Graham Bell" },
+        { text: "Doubt is the father of invention. Never hesitate to question and discover.", author: "Galileo Galilei" },
+        { text: "Your daily routine today shapes the doctor, researcher, or leader you become tomorrow.", author: "Academic Wisdom" }
+      ];
+
+      // Daily Amazing Scientific Facts Collection (Section 5)
+      const DAILY_FACTS = [
+        { topic: "BIOLOGY", text: "Human DNA stretched end-to-end from all your cells would reach the moon and back thousands of times." },
+        { topic: "HUMAN BODY", text: "The human cornea is the only tissue in the human body that has no blood vessels; it absorbs oxygen directly from the air." },
+        { topic: "NEUROSCIENCE", text: "Your brain generates about 12 to 25 watts of electricity—enough to power a low-wattage LED bulb." },
+        { topic: "GENETICS", text: "Humans share roughly 60% of their DNA with bananas, and 99.9% of DNA with every other human on Earth." },
+        { topic: "BOTANY", text: "Trees can communicate and share nutrients through an underground fungal network known as the mycorrhizal 'Wood Wide Web'." },
+        { topic: "PHYSIOLOGY", text: "The human stomach produces a new layer of mucus every two weeks to prevent digesting its own acid lining." },
+        { topic: "CELL BIOLOGY", text: "Mitochondria have their own circular DNA (mtDNA) inherited exclusively from the maternal lineage." },
+        { topic: "CHEMISTRY", text: "Water expands when freezing because of its unique hydrogen bonding lattice, which is why ice floats and preserves aquatic life." },
+        { topic: "ZOOLOGY", text: "An octopus has three hearts and blue copper-based blood called hemocyanin, adapted for cold ocean depths." },
+        { topic: "HUMAN BODY", text: "Bone marrow produces about 200 billion new red blood cells every single day." },
+        { topic: "ASTRONOMY", text: "Every heavy element inside your body—the iron in your hemoglobin, calcium in your bones—was forged in dying supernova stars." },
+        { topic: "BIOPHYSICS", text: "A hummingbird's heart can beat up to 1,260 times per minute during intense flight maneuvers." },
+        { topic: "BIOCHEMISTRY", text: "Enzymes can accelerate cellular chemical reactions by factors of more than a million times without being consumed." },
+        { topic: "GENETICS", text: "CRISPR-Cas9 was originally discovered as an adaptive immune defense system that bacteria use to cut bacteriophage viral DNA." },
+        { topic: "PLANT SCIENCE", text: "Xylem vessels use passive capillary action, cohesion, and transpiration pull to transport water over 100 meters high in redwood trees." },
+        { topic: "NEUROLOGY", text: "A nerve impulse can travel along sensory axons at speeds of up to 120 meters per second (approx. 430 km/h)." },
+        { topic: "IMMUNOLOGY", text: "Your immune system creates millions of antigen-specific antibodies every second during an active immune response." },
+        { topic: "PSYCHOLOGY", text: "The 'Spacing Effect' shows that studying in spaced intervals leads to 3x better long-term memory retention than cramming." },
+        { topic: "PHYSICS", text: "Light travels around the Earth 7.5 times in just one second, taking roughly 8 minutes and 20 seconds from the Sun to your eye." },
+        { topic: "MICROBIOLOGY", text: "The human gut microbiome contains over 100 trillion microbial cells, outnumbering your human cells." }
+      ];
+
+      // State Management
+      let currentSelectedDay = "Monday";
+      let activeSubjectFilter = "ALL";
+      let isWeekView = false;
+
+      /**
+       * Get deterministic index based on the day of the year
+       */
+      function getDayOfYear() {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+        const oneDay = 1000 * 60 * 60 * 24;
+        return Math.floor(diff / oneDay);
+      }
+
+      /**
+       * Populate Daily Motivation & Fact (Sections 4 & 5)
+       */
+      function populateDailyInspiration() {
+        const doy = getDayOfYear();
+        
+        // Quote
+        const quoteObj = MOTIVATIONAL_QUOTES[doy % MOTIVATIONAL_QUOTES.length];
+        document.getElementById("motivation-quote").textContent = `"${quoteObj.text}"`;
+        document.getElementById("motivation-author").textContent = `— ${quoteObj.author}`;
+
+        // Fact
+        const factObj = DAILY_FACTS[doy % DAILY_FACTS.length];
+        document.getElementById("daily-fact-text").textContent = factObj.text;
+        document.getElementById("fact-tag").textContent = factObj.topic;
+      }
+
+      /**
+       * Copy Motivation Quote
+       */
+      function copyQuoteToClipboard() {
+        const quoteEl = document.getElementById("motivation-quote");
+        const authorEl = document.getElementById("motivation-author");
+        const text = quoteEl ? quoteEl.textContent : "";
+        const author = authorEl ? authorEl.textContent : "";
+        const combined = `${text} ${author}`;
+        const label = document.getElementById("copy-quote-label");
+
+        const markSuccess = () => {
+          if (label) {
+            label.textContent = "Copied!";
+            setTimeout(() => { label.textContent = "Copy Quote"; }, 2000);
+          }
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(combined).then(markSuccess).catch(() => {
+            fallbackCopy(combined, markSuccess);
+          });
+        } else {
+          fallbackCopy(combined, markSuccess);
+        }
+      }
+
+      function fallbackCopy(str, onSuccess) {
+        try {
+          const el = document.createElement("textarea");
+          el.value = str;
+          el.style.position = "fixed";
+          el.style.opacity = "0";
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand("copy");
+          document.body.removeChild(el);
+          if (onSuccess) onSuccess();
+        } catch (_) {}
+      }
+
+      /**
+       * Automatically detect current day and initialize
+       */
+      function initDaySelection() {
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const todayIndex = new Date().getDay();
+        const todayName = days[todayIndex];
+
+        const weekendNotice = document.getElementById("weekend-notice-banner");
+
+        if (todayIndex >= 1 && todayIndex <= 5) {
+          currentSelectedDay = todayName;
+          weekendNotice.classList.add("hidden");
+        } else {
+          // Weekend (Saturday or Sunday): default to Monday and show notice (Section 6)
+          currentSelectedDay = "Monday";
+          weekendNotice.classList.remove("hidden");
+        }
+
+        updateDayTabsUI();
+        renderTimetableCards();
+        renderWeeklyMatrix();
+      }
+
+      /**
+       * Switch day tab
+       */
+      function setDay(day) {
+        currentSelectedDay = day;
+        updateDayTabsUI();
+        renderTimetableCards();
+      }
+
+      /**
+       * Jump to real today
+       */
+      function selectToday() {
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const todayIndex = new Date().getDay();
+        if (todayIndex >= 1 && todayIndex <= 5) {
+          setDay(days[todayIndex]);
+        } else {
+          setDay("Monday");
+        }
+      }
+
+      /**
+       * Filter subjects
+       */
+      function filterSubject(sub) {
+        activeSubjectFilter = sub;
+        document.querySelectorAll(".sub-filter-btn").forEach(btn => {
+          if (btn.getAttribute("data-sub") === sub) {
+            btn.className = "sub-filter-btn px-2.5 py-1 rounded-md bg-blue-600 text-white font-medium transition-colors shrink-0";
+          } else {
+            btn.className = "sub-filter-btn px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white font-medium transition-colors shrink-0";
+          }
+        });
+        renderTimetableCards();
+      }
+
+      /**
+       * Toggle between Cards View & Full Week Matrix View
+       */
+      function toggleWeekView() {
+        isWeekView = !isWeekView;
+        const cardsCont = document.getElementById("cards-view-container");
+        const weekCont = document.getElementById("week-table-container");
+        const label = document.getElementById("view-mode-label");
+
+        if (isWeekView) {
+          cardsCont.classList.add("hidden");
+          weekCont.classList.remove("hidden");
+          label.textContent = "Cards Day View";
+        } else {
+          cardsCont.classList.remove("hidden");
+          weekCont.classList.add("hidden");
+          label.textContent = "Week Overview Table";
+        }
+      }
+
+      /**
+       * Update UI of day tabs
+       */
+      function updateDayTabsUI() {
+        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+        const todayName = days[new Date().getDay() - 1]; // if Mon-Fri
+
+        document.getElementById("active-day-badge").textContent = currentSelectedDay;
+
+        days.forEach(day => {
+          const tab = document.getElementById(`tab-${day}`);
+          if (!tab) return;
+
+          const isSelected = day === currentSelectedDay;
+          const isRealToday = day === todayName;
+
+          tab.setAttribute("aria-selected", isSelected ? "true" : "false");
+
+          if (isSelected) {
+            tab.className = "day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-bold transition-all text-center border relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-blue-400/50 shadow-lg shadow-blue-600/30 ring-1 ring-blue-400";
+            tab.innerHTML = `
+              <span class="block">${day}</span>
+              <span class="text-[11px] font-normal text-blue-100 block mt-0.5">${isRealToday ? "● Today" : "10 Periods"}</span>
+            `;
+          } else {
+            tab.className = "day-tab flex-1 min-w-[130px] sm:min-w-0 py-3 px-4 rounded-xl text-sm font-medium transition-all text-center border bg-card-surface/80 hover:bg-navy-800 text-slate-300 hover:text-white border-white/[0.08]";
+            tab.innerHTML = `
+              <span class="block">${day}</span>
+              <span class="text-[11px] font-normal text-slate-400 block mt-0.5">${isRealToday ? "Today" : "10 Periods"}</span>
+            `;
+          }
+        });
+      }
+
+      /**
+       * Calculate Current Period State
+       */
+      function getCurrentStatusInfo() {
+        const now = new Date();
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const todayName = days[now.getDay()];
+        const isWeekday = now.getDay() >= 1 && now.getDay() <= 5;
+
+        const currentMinutes = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+        const schoolStartMin = 670;  // 11:10 AM
+        const schoolEndMin = 1070;   // 05:50 PM
+
+        if (!isWeekday) {
+          return {
+            state: "WEEKEND",
+            message: "Weekend • School resumes on Monday at 11:10 AM",
+            subtext: "Take time to rest, review notes, and prepare for the week.",
+            activePeriod: null,
+            nextPeriod: null,
+            progress: 0
+          };
+        }
+
+        const todaySchedule = SCHEDULE[todayName] || [];
+
+        // Before school starts (Section 14)
+        if (currentMinutes < schoolStartMin) {
+          const diffMinutes = Math.floor(schoolStartMin - currentMinutes);
+          const hoursLeft = Math.floor(diffMinutes / 60);
+          const minsLeft = diffMinutes % 60;
+          const nextSlot = todaySchedule[0];
+
+          return {
+            state: "BEFORE_SCHOOL",
+            message: "🌅 School starts at 11:10 AM",
+            subtext: `Classes begin in ${hoursLeft > 0 ? hoursLeft + 'h ' : ''}${minsLeft}m • First class: ${nextSlot ? nextSlot.subject + ' (' + nextSlot.teacher + ')' : ''}`,
+            activePeriod: null,
+            nextPeriod: nextSlot ? { ...nextSlot, slot: TIME_SLOTS[0] } : null,
+            progress: 0
+          };
+        }
+
+        // After school finishes (Section 15)
+        if (currentMinutes >= schoolEndMin) {
+          return {
+            state: "AFTER_SCHOOL",
+            message: "🌙 Today's classes are finished",
+            subtext: "All 10 periods completed for today. See you tomorrow at 11:10 AM!",
+            activePeriod: null,
+            nextPeriod: null,
+            progress: 100
+          };
+        }
+
+        // Inside school hours (11:10 AM - 05:50 PM)
+        let activeIdx = -1;
+        for (let i = 0; i < TIME_SLOTS.length; i++) {
+          if (currentMinutes >= TIME_SLOTS[i].startMin && currentMinutes < TIME_SLOTS[i].endMin) {
+            activeIdx = i;
+            break;
+          }
+        }
+
+        if (activeIdx !== -1) {
+          const slot = TIME_SLOTS[activeIdx];
+          const periodData = todaySchedule[activeIdx];
+          const nextPeriodData = todaySchedule[activeIdx + 1] ? {
+            ...todaySchedule[activeIdx + 1],
+            slot: TIME_SLOTS[activeIdx + 1]
+          } : null;
+
+          const progressPercent = Math.min(100, Math.max(0, 
+            ((currentMinutes - slot.startMin) / (slot.endMin - slot.startMin)) * 100
+          ));
+
+          const isBreak = periodData.type === "break" || periodData.subject.toLowerCase() === "break";
+
+          return {
+            state: isBreak ? "BREAK" : "IN_PROGRESS",
+            message: isBreak ? "☕ Break Time" : `● NOW • In Progress: ${periodData.subject}`,
+            subtext: isBreak 
+              ? `Break period ends at ${slot.endFormatted}. Next up: ${nextPeriodData ? nextPeriodData.subject + ' (' + nextPeriodData.teacher + ')' : 'Finish'}`
+              : `With ${periodData.teacher} • Ends at ${slot.endFormatted}`,
+            activePeriod: { ...periodData, slot, index: activeIdx },
+            nextPeriod: nextPeriodData,
+            progress: Math.round(progressPercent)
+          };
+        }
+
+        return {
+          state: "BETWEEN",
+          message: "Schedule Transition",
+          subtext: "Preparing for next slot",
+          activePeriod: null,
+          nextPeriod: null,
+          progress: 0
+        };
+      }
+
+      /**
+       * Render the Real-Time Status Card in Hero
+       */
+      function updateLiveStatusCard() {
+        const info = getCurrentStatusInfo();
+        const card = document.getElementById("live-status-card");
+
+        if (info.state === "IN_PROGRESS") {
+          card.className = "mt-6 rounded-2xl border transition-all p-4 sm:p-5 shadow-xl bg-gradient-to-r from-blue-950/80 via-navy-900 to-navy-850 border-blue-500/40 ring-1 ring-blue-500/30";
+          card.innerHTML = `
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div class="flex items-start gap-3.5">
+                <span class="relative flex h-3.5 w-3.5 mt-1 shrink-0">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+                </span>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">● NOW • Currently in progress</span>
+                    <span class="text-xs font-mono text-slate-400">Period ${info.activePeriod.period} (${info.activePeriod.slot.time})</span>
+                  </div>
+                  <div class="text-lg sm:text-xl font-extrabold text-white mt-0.5">
+                    ${info.activePeriod.subject} <span class="text-blue-300 font-semibold font-mono text-base">• ${info.activePeriod.teacher}</span>
+                  </div>
+                  <div class="text-xs text-slate-300 mt-0.5">
+                    Ends at ${info.activePeriod.slot.endFormatted}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Period Progress & Next Class -->
+              <div class="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 lg:items-center">
+                <!-- Progress Bar (Section 16) -->
+                <div class="min-w-[180px]">
+                  <div class="flex items-center justify-between text-xs font-mono mb-1">
+                    <span class="text-slate-400">Period Progress</span>
+                    <span class="text-blue-300 font-bold">${info.progress}%</span>
+                  </div>
+                  <div class="w-full bg-navy-950 rounded-full h-2 overflow-hidden border border-white/10">
+                    <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2 rounded-full transition-all duration-1000" style="width: ${info.progress}%"></div>
+                  </div>
+                </div>
+
+                <!-- Next Class (Section 17) -->
+                ${info.nextPeriod ? `
+                  <div class="pl-0 sm:pl-4 md:pl-0 lg:pl-4 border-t sm:border-t-0 md:border-t lg:border-t-0 sm:border-l md:border-l-0 lg:border-l border-white/10 pt-2 sm:pt-0 md:pt-2 lg:pt-0">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Next Class</div>
+                    <div class="text-xs font-bold text-white mt-0.5">
+                      Next → ${info.nextPeriod.subject} <span class="font-normal text-slate-400">(${info.nextPeriod.teacher || 'Break'})</span>
+                    </div>
+                    <div class="text-[11px] text-blue-300 font-mono">Starts at ${info.nextPeriod.slot.startFormatted}</div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        } else if (info.state === "BREAK") {
+          card.className = "mt-6 rounded-2xl border transition-all p-4 sm:p-5 shadow-xl bg-gradient-to-r from-amber-950/60 via-navy-900 to-navy-850 border-amber-500/30";
+          card.innerHTML = `
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl shrink-0">
+                  ☕
+                </div>
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider text-amber-400">● NOW • Break Time</div>
+                  <div class="text-lg font-bold text-white">Recess & Refreshment</div>
+                  <div class="text-xs text-slate-300">Period ${info.activePeriod.period} • Ends at ${info.activePeriod.slot.endFormatted}</div>
+                </div>
+              </div>
+
+              <!-- Progress & Next -->
+              <div class="flex flex-col sm:flex-row lg:items-center gap-4">
+                <div class="min-w-[170px]">
+                  <div class="flex items-center justify-between text-xs font-mono mb-1">
+                    <span class="text-slate-400">Break Elapsed</span>
+                    <span class="text-amber-300 font-bold">${info.progress}%</span>
+                  </div>
+                  <div class="w-full bg-navy-950 rounded-full h-2 overflow-hidden border border-white/10">
+                    <div class="bg-amber-400 h-2 rounded-full transition-all duration-1000" style="width: ${info.progress}%"></div>
+                  </div>
+                </div>
+
+                ${info.nextPeriod ? `
+                  <div class="pl-0 sm:pl-4 sm:border-l border-white/10">
+                    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Next Period</div>
+                    <div class="text-xs font-bold text-white mt-0.5">Next → ${info.nextPeriod.subject} (${info.nextPeriod.teacher})</div>
+                    <div class="text-[11px] text-amber-300 font-mono">Starts at ${info.nextPeriod.slot.startFormatted}</div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        } else if (info.state === "BEFORE_SCHOOL") {
+          card.className = "mt-6 rounded-2xl border transition-all p-4 sm:p-5 shadow-lg bg-card-surface border-white/[0.08]";
+          card.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg shrink-0">
+                  🌅
+                </div>
+                <div>
+                  <div class="text-sm sm:text-base font-bold text-white">${info.message}</div>
+                  <div class="text-xs text-slate-400 mt-0.5">${info.subtext}</div>
+                </div>
+              </div>
+              <div class="inline-flex items-center gap-2 text-xs font-mono text-blue-300 bg-navy-950 px-3 py-1.5 rounded-lg border border-white/5 self-start sm:self-auto">
+                <span>Starts in: ${info.subtext.split('•')[0].replace('Classes begin in ', '')}</span>
+              </div>
+            </div>
+          `;
+        } else if (info.state === "AFTER_SCHOOL") {
+          card.className = "mt-6 rounded-2xl border transition-all p-4 sm:p-5 shadow-lg bg-card-surface border-white/[0.08]";
+          card.innerHTML = `
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg shrink-0">
+                  🌙
+                </div>
+                <div>
+                  <div class="text-sm sm:text-base font-bold text-white">${info.message}</div>
+                  <div class="text-xs text-slate-400 mt-0.5">${info.subtext}</div>
+                </div>
+              </div>
+              <span class="hidden sm:inline-block text-xs text-slate-400 font-mono">Rest Well</span>
+            </div>
+          `;
+        } else {
+          // Weekend
+          card.className = "mt-6 rounded-2xl border transition-all p-4 sm:p-5 shadow-lg bg-card-surface border-white/[0.08]";
+          card.innerHTML = `
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg shrink-0">
+                  🏖️
+                </div>
+                <div>
+                  <div class="text-sm sm:text-base font-bold text-white">${info.message}</div>
+                  <div class="text-xs text-slate-400 mt-0.5">${info.subtext}</div>
+                </div>
+              </div>
+              <span class="hidden sm:inline-block text-xs font-mono text-emerald-400">Happy Weekend</span>
+            </div>
+          `;
+        }
+      }
+
+      /**
+       * Check if period matches filter
+       */
+      function matchesFilter(periodData) {
+        if (activeSubjectFilter === "ALL") return true;
+        if (activeSubjectFilter === "LAB") return periodData.type === "lab" || periodData.subject.includes("(Lab)");
+        return periodData.subject.toUpperCase().includes(activeSubjectFilter);
+      }
+
+      /**
+       * Render Timetable Cards (Sections 8, 9, 10, 11, 12, 13)
+       */
+      function renderTimetableCards() {
+        const grid = document.getElementById("timetable-cards-grid");
+        if (!grid) return;
+
+        const dayList = SCHEDULE[currentSelectedDay] || [];
+        const now = new Date();
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const todayName = days[now.getDay()];
+        const isCurrentViewingDayToday = (currentSelectedDay === todayName);
+
+        const currentMinutes = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+
+        let html = "";
+
+        dayList.forEach((item, index) => {
+          const slot = TIME_SLOTS[index];
+          const isFilterMatched = matchesFilter(item);
+          const opacityClass = isFilterMatched ? "opacity-100" : "opacity-35 grayscale";
+
+          // Period is active if today is current day and within time slot
+          const isActive = isCurrentViewingDayToday && (currentMinutes >= slot.startMin && currentMinutes < slot.endMin);
+
+          // Next class check
+          let isNext = false;
+          if (isCurrentViewingDayToday) {
+            if (currentMinutes < slot.startMin) {
+              // check if previous period was active or if before school and this is period 1
+              if (index === 0 && currentMinutes < 670) isNext = true;
+              else if (index > 0 && currentMinutes >= TIME_SLOTS[index - 1].startMin && currentMinutes < TIME_SLOTS[index - 1].endMin) {
+                isNext = true;
+              }
+            }
+          }
+
+          // Case A: BREAK PERIOD (Section 11)
+          if (item.type === "break" || item.subject.toLowerCase() === "break") {
+            html += `
+              <div class="md:col-span-2 rounded-2xl p-4 sm:p-5 border transition-all ${opacityClass} ${isActive ? 'bg-amber-950/40 border-amber-500 ring-2 ring-amber-500/50 shadow-xl' : 'bg-amber-950/20 border-amber-800/30'} flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-4">
+                  <span class="font-mono text-sm sm:text-base font-bold text-amber-400 bg-amber-900/40 px-3 py-1.5 rounded-xl border border-amber-700/40 tabular-nums">
+                    ${String(item.period).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xl sm:text-2xl font-extrabold text-amber-200 tracking-tight">☕ BREAK</span>
+                      ${isActive ? '<span class="px-2 py-0.5 text-[11px] font-bold rounded bg-amber-500 text-black uppercase animate-pulse">● NOW IN PROGRESS</span>' : ''}
+                      ${isNext ? '<span class="px-2 py-0.5 text-[11px] font-bold rounded bg-amber-900/60 text-amber-300 border border-amber-700/50 uppercase">UP NEXT</span>' : ''}
+                    </div>
+                    <div class="text-xs text-amber-300/80 mt-0.5">
+                      Recess • Relaxation & Refreshment
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right sm:text-right font-mono text-sm font-semibold text-amber-300 tabular-nums">
+                  ${slot.time}
+                </div>
+              </div>
+            `;
+            return;
+          }
+
+          // Case B: LAB PERIOD (Section 10)
+          const isLab = item.type === "lab" || item.subject.includes("(Lab)");
+          
+          // Subject styling helper
+          const cleanSubjectCode = item.subject.split(" ")[0].trim();
+          const subStyle = SUBJECT_STYLES[cleanSubjectCode] || { label: item.subject, badgeBg: "bg-blue-950/60", badgeText: "text-blue-300", border: "border-blue-500/30", dot: "bg-blue-400" };
+
+          // Card wrapper styling
+          let cardBorderClass = "border-white/[0.08]";
+          let cardBgClass = "bg-card-surface";
+          let activeBadgeHtml = "";
+
+          if (isActive) {
+            cardBorderClass = "border-blue-500 ring-2 ring-blue-500/50 shadow-2xl shadow-blue-500/20 active-period-card";
+            cardBgClass = "bg-gradient-to-br from-blue-950/70 via-navy-850 to-navy-900";
+            activeBadgeHtml = `
+              <div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold text-[11px] uppercase tracking-wide shadow-sm animate-pulse">
+                <span>● NOW</span>
+              </div>
+            `;
+          } else if (isNext) {
+            cardBorderClass = "border-blue-400/50";
+            activeBadgeHtml = `
+              <span class="text-[11px] font-bold tracking-wide uppercase px-2 py-0.5 rounded bg-blue-900/50 text-blue-300 border border-blue-500/30">
+                UP NEXT
+              </span>
+            `;
+          }
+
+          // Consecutive lab connected visual rail / badge (Section 10)
+          let labBannerHtml = "";
+          if (isLab) {
+            cardBorderClass = isActive ? "border-cyan-400 ring-2 ring-cyan-400/50 shadow-xl" : "border-cyan-500/30";
+            cardBgClass = isActive ? "bg-cyan-950/40" : "bg-gradient-to-br from-[#0c1c2c] to-card-surface";
+            labBannerHtml = `
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-cyan-500/20 text-xs text-cyan-300">
+                <span class="inline-flex items-center gap-1.5 font-bold tracking-wide uppercase text-[11px] text-cyan-200">
+                  <span class="text-sm">🧪</span>
+                  <span>DOUBLE PERIOD LAB • Part ${item.labPart || 'Session'}</span>
+                </span>
+                <span class="text-[11px] font-mono bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">Practical Session</span>
+              </div>
+            `;
+          }
+
+          html += `
+            <div class="relative rounded-2xl p-5 border transition-all duration-200 hover:border-white/20 ${cardBorderClass} ${cardBgClass} ${opacityClass} flex flex-col justify-between group">
+              <div>
+                ${labBannerHtml}
+                
+                <!-- Card Header: Period Number & Time -->
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono text-xs font-bold text-slate-300 bg-navy-950/80 px-2.5 py-1 rounded-lg border border-white/10 tabular-nums">
+                      P-${String(item.period).padStart(2, '0')}
+                    </span>
+                    <span class="font-mono text-xs text-slate-300 tabular-nums">
+                      ${slot.time}
+                    </span>
+                  </div>
+                  <div>
+                    ${activeBadgeHtml}
+                  </div>
+                </div>
+
+                <!-- Subject Title & Teacher (Dominant Visual Hierarchy - Section 8) -->
+                <div class="mt-4 mb-2">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight group-hover:text-blue-300 transition-colors">
+                      ${item.subject}
+                    </h3>
+                  </div>
+
+                  <!-- Teacher Initial -->
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="text-xs text-slate-400">Teacher / Faculty:</span>
+                    <span class="text-sm font-bold font-mono text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-500/20">
+                      ${item.teacher || 'N/A'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Footer: Subject Tag & Active Status Details -->
+              <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold ${subStyle.badgeText}">
+                  <span class="w-1.5 h-1.5 rounded-full ${subStyle.dot}"></span>
+                  <span>${subStyle.label}</span>
+                </span>
+
+                ${isActive ? `
+                  <span class="text-emerald-400 font-mono text-[11px] font-semibold">
+                    Ends at ${slot.endFormatted}
+                  </span>
+                ` : `
+                  <span class="text-slate-400 font-mono text-[11px]">
+                    ${slot.startFormatted}
+                  </span>
+                `}
+              </div>
+            </div>
+          `;
+        });
+
+        grid.innerHTML = html;
+      }
+
+      /**
+       * Render the 5-day Matrix Overview Table
+       */
+      function renderWeeklyMatrix() {
+        const tbody = document.getElementById("week-matrix-body");
+        if (!tbody) return;
+
+        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+        let rowsHtml = "";
+
+        TIME_SLOTS.forEach((slot, index) => {
+          rowsHtml += `
+            <tr class="hover:bg-white/[0.02] transition-colors">
+              <td class="p-3 font-mono font-semibold text-slate-300 whitespace-nowrap bg-navy-950/40">
+                <div class="text-xs text-blue-400">P-${String(slot.period).padStart(2, '0')}</div>
+                <div class="text-[11px] text-slate-400">${slot.time}</div>
+              </td>
+          `;
+
+          days.forEach(day => {
+            const item = SCHEDULE[day][index];
+            if (!item) {
+              rowsHtml += `<td class="p-3 text-slate-500">-</td>`;
+              return;
+            }
+
+            if (item.type === "break" || item.subject.toLowerCase() === "break") {
+              rowsHtml += `
+                <td class="p-3 bg-amber-950/20 text-amber-300 font-bold text-center">
+                  ☕ BREAK
+                </td>
+              `;
+            } else if (item.type === "lab" || item.subject.includes("(Lab)")) {
+              rowsHtml += `
+                <td class="p-3 bg-cyan-950/30 border-l border-cyan-500/20">
+                  <div class="font-extrabold text-cyan-300 text-xs">${item.subject}</div>
+                  <div class="text-[11px] font-mono text-cyan-400/80">${item.teacher} (Lab)</div>
+                </td>
+              `;
+            } else {
+              rowsHtml += `
+                <td class="p-3">
+                  <div class="font-bold text-white text-xs">${item.subject}</div>
+                  <div class="text-[11px] font-mono text-slate-400">${item.teacher}</div>
+                </td>
+              `;
+            }
+          });
+
+          rowsHtml += `</tr>`;
+        });
+
+        tbody.innerHTML = rowsHtml;
+      }
+
+      /**
+       * Real-Time Clock & Synchronizer (Runs every 1000ms)
+       */
+      function updateLiveClock() {
+        const now = new Date();
+
+        // Format Date e.g. "Tuesday, October 6, 2026"
+        const optionsDate = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+        const dateStr = now.toLocaleDateString('en-US', optionsDate);
+        
+        // Format Time e.g. "09:39:25 AM"
+        const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+        const timeStr = now.toLocaleTimeString('en-US', optionsTime);
+
+        // Update elements
+        const heroDate = document.getElementById("hero-live-date");
+        const heroTime = document.getElementById("hero-live-time");
+        const navTime = document.getElementById("nav-live-clock");
+
+        if (heroDate) heroDate.textContent = dateStr;
+        if (heroTime) heroTime.textContent = timeStr;
+        if (navTime) navTime.textContent = timeStr;
+
+        // Refresh live status bar
+        updateLiveStatusCard();
+
+        // Refresh cards live highlight only if viewing today's day
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const todayName = days[now.getDay()];
+        if (currentSelectedDay === todayName) {
+          renderTimetableCards();
+        }
+      }
+
+      // Initialize on DOM load
+      document.addEventListener("DOMContentLoaded", () => {
+        populateDailyInspiration();
+        initDaySelection();
+        updateLiveClock();
+
+        // Run clock updater every second
+        setInterval(updateLiveClock, 1000);
+      });
+    </script>
+  </body>
+</html>

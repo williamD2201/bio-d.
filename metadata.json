@@ -1,0 +1,8 @@
+{
+  "name": "Remix XI D BIO Routine",
+  "description": "Daily academic schedule and routine dashboard for Grade 11 Science Biology group.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
